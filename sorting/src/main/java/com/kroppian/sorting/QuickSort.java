@@ -1,4 +1,4 @@
-package com.kroppian.quicksort;
+package com.kroppian.sorting;
 
 import java.util.ArrayList;
 import com.kroppian.utils.SortingUtils;
