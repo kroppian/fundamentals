@@ -1,6 +1,8 @@
+package com.kroppian.sortingutils;
+
 import java.util.ArrayList;
 
-class SortingUtils {
+public class SortingUtils {
 
   public static ArrayList<Integer> listify(String[] source){
  
