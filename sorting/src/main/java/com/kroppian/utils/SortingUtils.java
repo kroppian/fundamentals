@@ -1,4 +1,4 @@
-package com.kroppian.sortingutils;
+package com.kroppian.utils;
 
 import java.util.ArrayList;
 
