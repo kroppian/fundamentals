@@ -28,7 +28,9 @@ class MergeSort {
   }
 
   public static ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right){
-  
+
+    System.out.print(left.toString() + " + " + right.toString());
+
     boolean found;
     for(int r = 0; r < right.size(); r++){
 
@@ -38,13 +40,14 @@ class MergeSort {
           left.add(l,right.get(r));
           break;
         }else if(l == left.size() - 1){
-          left.add(l++,right.get(r));
+          left.add(++l,right.get(r));
         }
 
       }
     
     }
    
+    System.out.println(" = " + left.toString());
     return left;
 
   }
