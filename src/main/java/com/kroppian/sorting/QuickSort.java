@@ -1,44 +1,59 @@
 package com.kroppian.sorting;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import com.kroppian.utils.SortingUtils;
 
 class QuickSort {
 
+  public static void quickSort(int[] list, int begindex, int endex){
 
-  public static ArrayList<Integer> quickSort(ArrayList<Integer> list){
-    
-    if(list.size() == 0)
-      return list;
+    System.out.println("in: [" + begindex + " " + endex + "]" );
 
-    ArrayList<Integer> lessThanEqualTo = new ArrayList<Integer>(0);
-    ArrayList<Integer> greaterThan = new ArrayList<Integer>(0);
 
-    int pivot = list.remove(0);
-    int originalListSize = list.size();
+    if((endex - begindex) <= 0) return;
 
-    for(int i = 0; i < originalListSize; i++){
+    int pivot = list[begindex];
+    int[] origList = new int[list.length];
    
-      if(list.get(0) > pivot){
-        greaterThan.add(list.remove(0));
-      } else {
-        lessThanEqualTo.add(list.remove(0));
-      }
+    // Copy the list into a new array to serve as a reference
+    for(int i = 0; i < list.length; i++) 
+      origList[i] = list[i];
 
+    // The next spot a greater than or equal to item will go
+    int nextGTESpot = endex;
+
+    // The next spot a less than item will go
+    int nextLTSpot = begindex;
+    //System.out.println("" nextLTSpot);
+
+    for(int i = begindex + 1; i < (endex - begindex + 1); i++) {
+      
+      if (origList[i] < pivot){
+        list[nextLTSpot] = origList[i];
+        nextLTSpot++;
+      } else {
+        list[nextGTESpot] = origList[i] ;
+        nextGTESpot--;
+      }
     }
 
-    lessThanEqualTo = quickSort(lessThanEqualTo);
-    greaterThan = quickSort(greaterThan);
+    list[nextLTSpot] = pivot;
 
-    lessThanEqualTo.add(pivot);
-    lessThanEqualTo.addAll(greaterThan);
-    return lessThanEqualTo;
+    // Quick sort the two seconds of array to the 
+    // left and to the right of the pivot
+    System.out.println("out0: [" + begindex + " " + (nextLTSpot - 1) + "]" );
+    System.out.println("out1: [" + (nextLTSpot + 1) + " " + endex + "]" );
+    if((nextLTSpot - 1) >= 0)
+      quickSort(list, begindex, (nextLTSpot - 1)); 
+    
+    if((nextLTSpot + 1) <= endex)
+      quickSort(list, (nextLTSpot + 1), endex); 
 
   }
 
   public static void main(String[] argv){
-
-    ArrayList<Integer> list = new ArrayList<Integer>();
+    
+    int[] list;
 
     if((list = SortingUtils.listify(argv)) == null){
       System.err.println("Unable to parse array. Exiting."); 
@@ -47,15 +62,15 @@ class QuickSort {
 
     System.out.println("Before:"); 
 
-    System.out.println(list.toString()); 
+    System.out.println(Arrays.toString(list)); 
     System.out.println("---"); 
 
-    list = quickSort(list);
+    quickSort(list, 0, list.length - 1);
 
     System.out.println(""); 
     System.out.println("---"); 
     System.out.println("After:"); 
-    System.out.println(list.toString()); 
+    System.out.println(Arrays.toString(list)); 
 
 
   }

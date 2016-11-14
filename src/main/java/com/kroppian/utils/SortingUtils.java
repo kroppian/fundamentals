@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class SortingUtils {
 
-  public static ArrayList<Integer> listify(String[] source){
+  public static int[] listify(String[] source){
  
-    ArrayList<Integer> destination = new ArrayList<Integer>();
+    int[] destination = new int[source.length];
 
     for(int i = 0; i < source.length; i++){
       try {
-        destination.add(Integer.parseInt(source[i])); 
+        destination[i] = Integer.parseInt(source[i]); 
       }catch(NumberFormatException e){
         System.err.println("Item number " + (i + 1) + 
             " is not a valid integer: \"" + source[i] + "\""); 
