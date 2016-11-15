@@ -1,10 +1,10 @@
 package com.kroppian.sorting; 
-import java.util.ArrayList;
+import java.util.Arrays;
 import com.kroppian.utils.SortingUtils;
 
 class MergeSort {
 
-  public static ArrayList<Integer> mergeSort(ArrayList<Integer> list){
+  /*public static void mergeSort(int[] list){
 
     if (list.size() == 1 || list.size() == 0)
       return list;
@@ -25,36 +25,55 @@ class MergeSort {
 
     return merge(left,right);
 
-  }
+  }*/
 
-  public static ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right){
+  private static void merge(int[] arr, int begindex, int mindex, int endex){
+  
+    //System.out.println("Going in: " + Arrays.toString(arr)); 
+    //System.out.println("begindex: " + begindex); 
+    //System.out.println("Mindex: " + mindex); 
+    //System.out.println("endex: " + endex); 
 
-    System.out.print(left.toString() + " + " + right.toString());
 
-    boolean found;
-    for(int r = 0; r < right.size(); r++){
+    int[] origArr = new int[arr.length];
 
-      for(int l = 0; l < left.size(); l++){
-      
-        if(right.get(r) <= left.get(l)){
-          left.add(l,right.get(r));
-          break;
-        }else if(l == left.size() - 1){
-          left.add(++l,right.get(r));
-        }
+    System.arraycopy(arr, 0, origArr,0 ,arr.length);
 
+    int leftPos = begindex;
+    int rightPos = mindex;
+
+    // Assuming both the left and the right side are sorted themselves...
+    for(int i = begindex; i < (endex + 1); i++){
+  
+      //System.out.println(origArr[leftPos] + " vs. " + origArr[rightPos]);
+
+      if(leftPos >= mindex){
+        //System.out.println("0");
+        arr[i] = origArr[rightPos];
+        rightPos++;
+      }else if(rightPos > endex){
+        //System.out.println("1");
+        arr[i] = origArr[leftPos];
+        leftPos++;
+      }else if(origArr[leftPos] <= origArr[rightPos]){
+        //System.out.println("2");
+        arr[i] = origArr[leftPos]; 
+        leftPos++;
+      }else{
+        //System.out.println("3");
+        arr[i] = origArr[rightPos];
+        rightPos++;
       }
     
     }
-   
-    System.out.println(" = " + left.toString());
-    return left;
+
+    return;
 
   }
 
   public static void main(String argv[]){
  
-    ArrayList<Integer> list = new ArrayList<Integer>();
+    int[] list;
 
     if((list = SortingUtils.listify(argv)) == null){
       System.err.println("Unable to parse array. Exiting."); 
@@ -63,16 +82,15 @@ class MergeSort {
     
     System.out.println("Before:"); 
 
-    System.out.println(list.toString()); 
+    System.out.println(Arrays.toString(list)); 
     System.out.println("---"); 
 
-    list = mergeSort(list);
+    merge(list, 0, (list.length / 2), (list.length - 1) );
 
     System.out.println(""); 
     System.out.println("---"); 
     System.out.println("After:"); 
-    System.out.println(list.toString()); 
-
+    System.out.println(Arrays.toString(list)); 
 
   }
 
