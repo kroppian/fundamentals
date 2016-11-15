@@ -4,28 +4,20 @@ import com.kroppian.utils.SortingUtils;
 
 class MergeSort {
 
-  /*public static void mergeSort(int[] list){
+  public static void mergeSort(int[] list, int begindex, int endex){
 
-    if (list.size() == 1 || list.size() == 0)
-      return list;
-    else if(list.size() == 2){
-      if(list.get(0) > list.get(1)){
-        list.add(0,list.remove(1));
-        return list;
-      }
-    }
+    int listLength = endex - begindex;
 
-    int halfWay = list.size() / 2;
+    if(listLength == 0) return;
 
-    ArrayList<Integer> left = new ArrayList<Integer>( list.subList(0,halfWay));
-    ArrayList<Integer> right = new ArrayList<Integer>( list.subList(halfWay,list.size()));
-     
-    left = mergeSort(left);
-    right = mergeSort(right);
+    mergeSort(list, begindex, begindex + (listLength / 2));
+    mergeSort(list, begindex + (listLength / 2) + 1, endex );
 
-    return merge(left,right);
+    merge(list, begindex, begindex + (listLength / 2) + 1, endex);
 
-  }*/
+    return;
+
+  }
 
   private static void merge(int[] arr, int begindex, int mindex, int endex){
   
@@ -33,7 +25,6 @@ class MergeSort {
     //System.out.println("begindex: " + begindex); 
     //System.out.println("Mindex: " + mindex); 
     //System.out.println("endex: " + endex); 
-
 
     int[] origArr = new int[arr.length];
 
@@ -85,7 +76,7 @@ class MergeSort {
     System.out.println(Arrays.toString(list)); 
     System.out.println("---"); 
 
-    merge(list, 0, (list.length / 2), (list.length - 1) );
+    mergeSort(list, 0, (list.length - 1) );
 
     System.out.println(""); 
     System.out.println("---"); 
