@@ -36,7 +36,8 @@ class HeapSort {
   }
 
   private static int getParent(int index){
-  
+ 
+    int parent;  
     if(index % 2 == 0)
       parent = (index - 2) / 2;
     else 
