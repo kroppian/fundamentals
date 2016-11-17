@@ -9,7 +9,7 @@ class HeapSort {
 
     // Heapify from the bottom up
     // for 
-      heapify(arr);
+      heapify(arr,0,arr.length-1);
 
     // for each item (i) in arr
     for(int i = 0; i < arr.length; i++)
@@ -23,16 +23,30 @@ class HeapSort {
   /*
    * Assumes that all child nodes are already heapified
    */
-  public static void heapify(int arr[])
+  public static void heapify(int arr[], int begindex, int endex)
   {
 
-    arr[0] = 99;
-    // if the child is larger than the parent
-    
+    // is parent smaller than child?
+    if(getLChild(begindex) <= endex 
+      && arr[begindex] < arr[getLChild(begindex)]){
+      // if the child is larger than the parent
+       
       // Swap  child and parent
+      swap(arr,begindex,getLChild(begindex));  
 
       // Call heapify on child
+    
+    }
 
+    if(getRChild(begindex) <= endex 
+      && arr[begindex] < arr[getRChild(begindex)]){
+       
+      // Swap  child and parent
+      swap(arr,begindex,getRChild(begindex));  
+
+      // Call heapify on child
+    
+    }
 
   }
 
@@ -48,12 +62,14 @@ class HeapSort {
 
   }
 
-  public static void siftDown(int arr[])
-  {
-   
-    
-
+  private static int getLChild(int index){
+    return ((index * 2) + 1);
   }
+
+  private static int getRChild(int index){
+    return ((index * 2) + 2);
+  }
+
 
   private static void swap(int arr[], int val1dex, int val2dex)
   {
