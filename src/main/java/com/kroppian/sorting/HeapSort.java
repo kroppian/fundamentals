@@ -23,9 +23,10 @@ class HeapSort {
   /*
    * Assumes that all child nodes are already heapified
    */
-  private static void heapify(int arr[])
+  public static void heapify(int arr[])
   {
 
+    arr[0] = 99;
     // if the child is larger than the parent
     
       // Swap  child and parent
