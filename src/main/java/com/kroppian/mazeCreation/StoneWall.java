@@ -1,0 +1,5 @@
+class StoneWall extends Wall {
+
+
+
+}
