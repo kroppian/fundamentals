@@ -1,14 +1,14 @@
 class BoringMazeFactory extends AbstractMazeFactory {
 
-  EmptyRoom makeRoom(){
+  EmptyRoom makeRoom(Location n, Location e, Location s, Location w){
  
-    return new EmptyRoom();
+    return new EmptyRoom(n,e,s,w);
 
   }  
 
-  StoneWall makeWall(){
+  StoneWall makeWall(Location n, Location e, Location s, Location w){
  
-    return new StoneWall(); 
+    return new StoneWall(n,e,s,w); 
   
   }
 

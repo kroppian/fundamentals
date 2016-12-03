@@ -5,7 +5,7 @@ abstract class Location {
   Location south;
   Location west;
 
-  public void Location(Location n, Location e, Location s, Location w){
+  public Location(Location n, Location e, Location s, Location w){
  
     this.north = n;
     this.south = s;
