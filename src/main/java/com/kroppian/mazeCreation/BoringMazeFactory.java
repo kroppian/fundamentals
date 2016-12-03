@@ -12,5 +12,11 @@ class BoringMazeFactory extends AbstractMazeFactory {
   
   }
 
+  void prettyPrint(){
+    System.out.println("----------"); 
+    System.out.println("-        -"); 
+    System.out.println("-        -"); 
+    System.out.println("----------"); 
+  }
 
 }
