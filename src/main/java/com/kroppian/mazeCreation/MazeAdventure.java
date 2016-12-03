@@ -1,15 +1,19 @@
 class MazeAdventure {
 
   public static void main(String[] args){
-    System.out.println("Hello world!");  
 
-    AbstractMazeFactory bob = AbstractMazeFactory.instantiate("boring");
+    MazeFactory makeMkr = MazeFactory.instantiate("boring");
 
-    if(bob != null){
-      System.out.println("All is good"); 
-    } else {
-      System.out.println("Not where we want to be"); 
-    } 
+    if(makeMkr == null){
+      System.err.println("Something has gone awry"); 
+      System.exit(1);
+    }
+
+    // #
+
+
+
+
 
   }
 

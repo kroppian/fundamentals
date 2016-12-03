@@ -1,9 +1,13 @@
-class Wall extends Location {
+abstract class Wall extends Location {
 
-  public Wall(Location n, Location e, Location s, Location w){  
+  protected Wall(Location n, Location e, Location s, Location w){  
 
     super(n,e,s,w);
 
   }
+  
+  abstract public void prettyPrintCurrentLocation();
+
+  abstract public Location newLocation(Location n, Location e, Location s, Location w);
 
 }

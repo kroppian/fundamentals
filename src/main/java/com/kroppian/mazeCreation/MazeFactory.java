@@ -1,6 +1,6 @@
-abstract class AbstractMazeFactory {
+abstract class MazeFactory {
 
-  protected void AbstractMazeFactory(){};
+  protected void MazeFactory(){};
 
   private static boolean instantiated = false;
 
@@ -8,11 +8,9 @@ abstract class AbstractMazeFactory {
   
   abstract Wall makeWall(Location n, Location e, Location s, Location w);
 
-  abstract void prettyPrint();
+  public static MazeFactory instantiate(String mazeType){
 
-  public static AbstractMazeFactory instantiate(String mazeType){
-
-    AbstractMazeFactory instance;  
+    MazeFactory instance;  
 
     if (instantiated){
       instance = null;

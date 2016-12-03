@@ -1,4 +1,4 @@
-class BoringMazeFactory extends AbstractMazeFactory {
+class BoringMazeFactory extends MazeFactory {
 
   EmptyRoom makeRoom(Location n, Location e, Location s, Location w){
  
@@ -12,11 +12,5 @@ class BoringMazeFactory extends AbstractMazeFactory {
   
   }
 
-  void prettyPrint(){
-    System.out.println("----------"); 
-    System.out.println("-        -"); 
-    System.out.println("-        -"); 
-    System.out.println("----------"); 
-  }
 
 }

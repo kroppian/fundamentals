@@ -1,9 +1,13 @@
-public class Room extends Location {
+abstract public class Room extends Location {
 
-  public Room(Location n, Location e, Location s, Location w){
+  protected Room(Location n, Location e, Location s, Location w){
   
     super(n,e,s,w);
   
   }
+
+  abstract public void prettyPrintCurrentLocation();
+
+  abstract public Location newLocation(Location n, Location e, Location s, Location w);
 
 }
